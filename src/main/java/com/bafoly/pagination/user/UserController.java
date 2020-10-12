@@ -1,9 +1,9 @@
 package com.bafoly.pagination.user;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,8 +13,8 @@ public class UserController {
   UserService userService;
 
   @GetMapping("/api/1.0/users")
-  List<User> getUsers(){
-    return userService.getUsers();
+  Page<User> getUsers(@RequestParam int pageSize, @RequestParam int pageNumber) {
+    return userService.getUsers(pageNumber, pageSize);
   }
 
 }
