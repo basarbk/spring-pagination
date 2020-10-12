@@ -13,7 +13,7 @@ public class UserController {
   UserService userService;
 
   @GetMapping("/api/1.0/users")
-  Page<User> getUsers(@RequestParam int pageSize, @RequestParam int pageNumber) {
+  Page<User> getUsers(@RequestParam int pageSize, @RequestParam(defaultValue = "0", required = false) int pageNumber) {
     return userService.getUsers(pageNumber, pageSize);
   }
 
